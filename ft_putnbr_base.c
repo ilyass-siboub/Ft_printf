@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ptr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isiboub <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 16:26:23 by isiboub           #+#    #+#             */
-/*   Updated: 2025/11/01 16:26:38 by isiboub          ###   ########.fr       */
+/*   Created: 2025/11/20 19:21:03 by isiboub           #+#    #+#             */
+/*   Updated: 2025/11/20 19:22:15 by isiboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ptr(void *ptr)
+int	ft_putnbr_base(unsigned long n, char *base)
 {
-	unsigned long	address;
-	int				count;
+	int	count;
 
 	count = 0;
-	address = (unsigned long)ptr;
-	count += write(1, "0x", 2);
-	count += ft_putnbr_base(address, "0123456789abcdef");
+	if (n >= 16)
+		count += ft_putnbr_base(n / 16, base);
+	count += ft_putchar(base[n % 16]);
 	return (count);
 }

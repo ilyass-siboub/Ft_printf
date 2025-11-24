@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isiboub <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 16:25:42 by isiboub           #+#    #+#             */
-/*   Updated: 2025/11/01 16:25:56 by isiboub          ###   ########.fr       */
+/*   Created: 2025/11/20 19:15:54 by isiboub           #+#    #+#             */
+/*   Updated: 2025/11/22 11:06:40 by isiboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_hex(unsigned int n, char spec)
+int	ft_putnbr(int n)
 {
-	char	*base;
 	int		count;
+	long	nb;
 
-	if (spec == 'x')
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";
-	count = ft_putnbr_base(n, base);
+	count = 0;
+	nb = n;
+	if (nb < 0)
+	{
+		count += ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb >= 10)
+		count += ft_putnbr(nb / 10);
+	count += ft_putchar((nb % 10) + '0');
 	return (count);
 }

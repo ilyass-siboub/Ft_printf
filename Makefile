@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: isiboub <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/11/01 16:08:59 by isiboub           #+#    #+#              #
-#    Updated: 2025/11/02 17:43:34 by isiboub          ###   ########.fr        #
+#    Created: 2025/11/20 19:06:32 by isiboub           #+#    #+#              #
+#    Updated: 2025/11/20 20:46:42 by isiboub          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,9 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
-SRC = ft_printf.c handle_conversion.c \
-	  print_char.c print_str.c print_nbr.c \
-	  print_unsigned.c print_hex.c print_ptr.c \
-	  utils.c
+SRC = ft_printf.c ft_convert.c \
+	ft_putchar.c ft_putstr.c ft_putnbr.c ft_putnbr_base.c \
+	ft_putunsigned.c ft_puthex.c ft_putptr.c
 
 OBJ = $(SRC:.c=.o)
 

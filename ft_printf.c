@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: isiboub <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 16:13:16 by isiboub           #+#    #+#             */
-/*   Updated: 2025/11/01 16:13:32 by isiboub          ###   ########.fr       */
+/*   Created: 2025/11/20 19:22:53 by isiboub           #+#    #+#             */
+/*   Updated: 2025/11/21 19:54:37 by isiboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		count;
 
+	if (!format)
+		return (-1);
 	count = 0;
 	va_start(args, format);
-	while (*format)
+	while (*format || write(1, 0, 0) == -1)
 	{
 		if (*format == '%')
 		{
 			format++;
-			count += handle_conversion(*format, args);
+			if (!*format)
+				return (-1);
+			count += ft_convert(*format, args);
 		}
 		else
 			count += ft_putchar(*format);

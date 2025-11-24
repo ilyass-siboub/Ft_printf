@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_nbr.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isiboub <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 16:15:45 by isiboub           #+#    #+#             */
-/*   Updated: 2025/11/01 16:15:52 by isiboub          ###   ########.fr       */
+/*   Created: 2025/11/20 20:23:15 by isiboub           #+#    #+#             */
+/*   Updated: 2025/11/20 20:52:02 by isiboub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_nbr(int n)
+int	ft_puthex(unsigned int n, char spec)
 {
-	int	count;
+	char	*base;
+	int		count;
 
-	count = ft_putnbr((long)n);
+	if (spec == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	count = ft_putnbr_base(n, base);
 	return (count);
 }
